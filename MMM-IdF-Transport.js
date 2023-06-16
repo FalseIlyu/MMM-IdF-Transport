@@ -79,13 +79,15 @@ Module.register("MMM-IdF-Transport", {
                         }
                     }).sort((a, b) => {
                         if (a.route.TransportMode === b.route.TransportMode) {
-                            if (a.route.ShortName_Line === b.route.ShortName_Line) {
-                                if (a.route.ID_Line === b.route.ID_Line) {
-                                    return ((a.service.ExpectedDepartureTime > b.service.ExpectedDepartureTime) ? 1 : -1)
+                            if (a.service.ExpectedDepartureTime === b.service.ExpectedDepartureTime) {
+                                if (a.route.ShortName_Line === b.route.ShortName_Line) {
+                                    if (a.route.ShortName_Line === b.route.ShortName_Line) {
+                                        return ((a.route.ID_Line > b.route.ID_Line) ? 1 : -1);
+                                    }
                                 }
-                                return ((a.route.ID_Line > b.route.ID_Line) ? 1 : -1);
+                                return ((parseInt(a.route.ShortName_Line) > parseInt(b.route.ShortName_Line)) ? 1 : -1);
                             }
-                            return ((parseInt(a.route.ShortName_Line) > parseInt(b.route.ShortName_Line)) ? 1 : -1);
+                            return ((a.service.ExpectedDepartureTime > b.service.ExpectedDepartureTime) ? 1 : -1)
                         }
                         return ((a.route.TransportMode < b.route.TransportMode) ? 1 : -1);
                     });
