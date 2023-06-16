@@ -35,17 +35,20 @@
 	}
 	
 .MMM-IdF-Transport .bus {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	display:inline-block;
+	font-weight: bold;
 	position: relative;
 	text-align: center;
-	vertical-align:top;
-	color: white;
-	}
+	color: black;
+}
 
-img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 40%;
+.MMM-IdF-Transport .lineIcon {
+	margin-top: auto;
+	margin-bottom: auto;
+	object-fit: contain;
+	max-height:100%;
+	max-width:40%;
 }
 
 /* Container holding the image and the text */

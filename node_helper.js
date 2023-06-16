@@ -30,9 +30,9 @@ const linesReference = function() {
                     item.lineHtml = `<div class="container"><img src="${item.Picto}" alt="Snow" style="width:${imgScale};"></div>`;
                 } else {
                     if (item.TransportMode.normalize() === 'bus') {
-                        item.lineHtml =  `<div class="bus">
-                            <img src=${busImage} alt="Snow" style="width:${imgScale}; background-color:white">
-                            <sup>${item.ShortName_Line}</sup>
+                        item.lineHtml =  `<div class="bus" style="background-color:#${item.ColourWeb_hexa}">
+                            <img class="lineIcon" src=${busImage}/>
+                            <text class="bus">${item.ShortName_Line}</text>
                         </div>`;
                     }
                 }
