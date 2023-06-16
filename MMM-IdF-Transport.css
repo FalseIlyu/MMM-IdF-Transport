@@ -41,6 +41,13 @@
 	color: white;
 	}
 
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+}
+
 /* Container holding the image and the text */
 .container {
 	position: relative;
