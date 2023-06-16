@@ -1,4 +1,5 @@
 .MMM-IdF-Transport .table {
+	font-family: 'Helvetica', 'Arial', sans-serif;
     border-spacing: 0px 0px;
     border-collapse: separate;
     text-align: left;
@@ -9,14 +10,16 @@
 	}
 
 .MMM-IdF-Transport .destination {
+	font-family: 'Helvetica', 'Arial', sans-serif;
 	font-weight: normal;
 	color: white;
 	}
 	
 .MMM-IdF-Transport .line {
+	font-family: 'Helvetica', 'Arial', sans-serif;
     border-spacing: 10px 0px;
     border-collapse: separate;
-    text-align: left;
+    text-align: center;
 	color:white;
 	font-weight: normal;
 	width: 60px;
@@ -35,29 +38,16 @@
 	}
 	
 .MMM-IdF-Transport .bus {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-weight: bold;
 	position: relative;
 	text-align: center;
 	color: black;
 }
 
-.MMM-IdF-Transport .busIcon {
+.MMM-IdF-Transport .lineIcon {
 	display:inline-block;
 	object-fit: contain;
 	max-height:100%;
-	max-width:25%;
+	max-width:40%;
 }
-
-/* Container holding the image and the text */
-.container {
-	position: relative;
-	text-align: center;
-	color: white;
-  }
-
-/* Centered text */
-.centered {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(0%, -50%);
-  }
