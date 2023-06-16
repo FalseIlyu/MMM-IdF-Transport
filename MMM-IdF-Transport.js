@@ -66,26 +66,25 @@ Module.register("MMM-IdF-Transport", {
     */
     generateETA: function (etas) {
         this.primData = Object.entries(etas)
-            .filter(([stopID,]) => this.subscribedToETA(stopID))
+            .filter(([stopID, value]) => this.subscribedToETA(stopID) && value.Siri)
             .map(([k, v]) => {
-                const stop = v;
-                // [0].MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime
-                // Merge sevices and routes into one
-                const stopInfo = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(service => {
-                    return {
-                        route: service.MonitoredVehicleJourney.LineRef,
-                        service: service.MonitoredVehicleJourney.MonitoredCall
-                    }
-                }).sort((a, b) => (a.route > b.route) ? 1 : -1);
+                    const stop = v;
+                    // Merge sevices and routes into one
+                    const stopInfo = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(service => {
+                        return {
+                            route: service.MonitoredVehicleJourney.LineRef,
+                            service: service.MonitoredVehicleJourney.MonitoredCall
+                        }
+                    }).sort((a, b) => (a.route > b.route) ? 1 : -1);
 
-                stop.stopID = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit[0].MonitoringRef.value;
-                stop.stopInfo = stopInfo;
-                delete stop.Siri;
+                    stop.stopID = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit[0].MonitoringRef.value;
+                    stop.stopInfo = stopInfo;
+                    delete stop.Siri;
 
-                return [k, v];
+                    return [k, v];
             })
             .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-    },
+},
 
     /**
      * Check if this module is configured to show this ETA.
@@ -246,23 +245,12 @@ Module.register("MMM-IdF-Transport", {
         let row = document.createElement("tr");
 
         let line = document.createElement("td");
-        let busImage = "https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/referentiel-des-lignes-de-transport-en-commun-dile-de-france/files/37b0b83646222f1e3a45084a6eb6a7f7"
-        let imgScale = "50%"
-        let lineHtml = routeObj.route.ShortName_Line;
-
-        if (routeObj.route.Picto) {
-            lineHtml = `<div class="container"><img src="${routeObj.route.Picto}" alt="Snow" style="width:${imgScale};"></div>`;
-        } else {
-            if (routeObj.route.TransportMode.normalize() === 'bus') {
-                lineHtml =  `<div class="container">
-                    <img src=${busImage} alt="Snow" style="width:${imgScale};">
-                    <div class="centered">${routeObj.route.ShortName_Line}</div>
-                </div>`;
-            }
-        }
         
         line.className = "line";
-        line.innerHTML = lineHtml;
+
+        line.innerHTML = routeObj.route.ID_Line
+        if (line.innerHTML)
+            line.innerHTML = routeObj.route.lineHtml;
         /*if (routeObj.route.brand === "GMBBus")
             line.innerHTML += '<sup><i class="fas fa-shuttle-van"></i></sup>';*/
         row.appendChild(line);
