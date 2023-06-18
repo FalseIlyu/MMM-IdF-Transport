@@ -39,15 +39,34 @@
 	
 .MMM-IdF-Transport .bus {
 	font-family: 'Helvetica', 'Arial', sans-serif;
+	display: inline-block;
+	text-align: center;
 	font-weight: bold;
+	vertical-align: middle;
+	margin-bottom: auto;
+	margin-top: auto;
+	color: black;
+}
+
+.MMM-IdF-Transport .lineIcon {
+	display: block;
+	float: left;
+	object-fit: contain;
+	max-height: 100%;
+	max-width: 40%;
+}
+
+/* Container holding the image and the text */
+.container {
 	position: relative;
 	text-align: center;
 	color: black;
 }
 
-.MMM-IdF-Transport .lineIcon {
-	display:inline-block;
-	object-fit: contain;
-	max-height:100%;
-	max-width:40%;
-}
+/* Centered text */
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(0%, -50%);
+  }
