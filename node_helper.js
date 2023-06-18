@@ -31,8 +31,7 @@ const linesReference = function() {
                 } else {
                     if (item.TransportMode.normalize() === 'bus') {
                         item.lineHtml =  `<div class="bus" style="background-color:#${item.ColourWeb_hexa}">
-                            <img class="lineIcon" src=${busImage}/>
-                            <text class="bus">${item.ShortName_Line}</text>
+                            <div class="bus"><img class="lineIcon" src=${busImage}/>${item.ShortName_Line}</div>
                         </div>`;
                     }
                 }
