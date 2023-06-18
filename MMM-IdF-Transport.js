@@ -78,8 +78,8 @@ Module.register("MMM-IdF-Transport", {
                             service: service.MonitoredVehicleJourney.MonitoredCall
                         }
                     }).sort((a, b) => {
-                        if (a.route.TransportMode === b.route.TransportMode) {
-                            if (a.service.ExpectedDepartureTime === b.service.ExpectedDepartureTime) {
+                        if (a.service.ExpectedDepartureTime === b.service.ExpectedDepartureTime) {
+                            if (a.route.TransportMode === b.route.TransportMode) {
                                 if (a.route.ShortName_Line === b.route.ShortName_Line) {
                                     if (a.route.ShortName_Line === b.route.ShortName_Line) {
                                         return ((a.route.ID_Line > b.route.ID_Line) ? 1 : -1);
@@ -87,9 +87,9 @@ Module.register("MMM-IdF-Transport", {
                                 }
                                 return ((parseInt(a.route.ShortName_Line) > parseInt(b.route.ShortName_Line)) ? 1 : -1);
                             }
-                            return ((a.service.ExpectedDepartureTime > b.service.ExpectedDepartureTime) ? 1 : -1)
+                            return ((a.route.TransportMode < b.route.TransportMode) ? 1 : -1);
                         }
-                        return ((a.route.TransportMode < b.route.TransportMode) ? 1 : -1);
+                        return ((a.service.ExpectedDepartureTime > b.service.ExpectedDepartureTime) ? 1 : -1)
                     });
 
                     stop.stopID = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit[0].MonitoringRef.value;

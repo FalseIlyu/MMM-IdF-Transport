@@ -1,5 +1,8 @@
+.MMM-IdF-Transport {
+	--pictoSize: 45%;
+}
+
 .MMM-IdF-Transport .table {
-	font-family: 'Helvetica', 'Arial', sans-serif;
     border-spacing: 0px 0px;
     border-collapse: separate;
     text-align: left;
@@ -10,13 +13,11 @@
 	}
 
 .MMM-IdF-Transport .destination {
-	font-family: 'Helvetica', 'Arial', sans-serif;
 	font-weight: normal;
 	color: white;
 	}
 	
 .MMM-IdF-Transport .line {
-	font-family: 'Helvetica', 'Arial', sans-serif;
     border-spacing: 10px 0px;
     border-collapse: separate;
     text-align: center;
@@ -38,27 +39,32 @@
 	}
 	
 .MMM-IdF-Transport .bus {
-	font-family: 'Helvetica', 'Arial', sans-serif;
 	display: inline-block;
 	text-align: center;
-	font-weight: bold;
 	vertical-align: middle;
-	margin-bottom: auto;
-	margin-top: auto;
-	color: black;
+	margin: auto;
+	font-weight: bold;
+	font-size: large;
+	color: #282525;
+}
+
+.MMM-IdF-Transport .pictoIcon {
+	max-width: var(--pictoSize);
+	object-fit: contain;
+	display: block;
+	margin: auto;
 }
 
 .MMM-IdF-Transport .lineIcon {
-	display: block;
-	float: left;
+	max-width: var(--pictoSize);
 	object-fit: contain;
-	max-height: 100%;
-	max-width: 40%;
+	display: block;
+	margin: auto;
+	float: left;
 }
 
 /* Container holding the image and the text */
 .container {
-	position: relative;
 	text-align: center;
 	color: black;
 }
