@@ -71,11 +71,26 @@ Module.register("MMM-IdF-Transport", {
                     const stop = v;
                     // Merge sevices and routes into one
                     const stopInfo = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(service => {
+                        let DepartureTime = new Date(service.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime)
+                        service.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime = DepartureTime
                         return {
                             route: service.MonitoredVehicleJourney.LineRef,
                             service: service.MonitoredVehicleJourney.MonitoredCall
                         }
-                    }).sort((a, b) => (a.route > b.route) ? 1 : -1);
+                    }).sort((a, b) => {
+                        if (a.route.TransportMode === b.route.TransportMode) {
+                            if (a.service.ExpectedDepartureTime === b.service.ExpectedDepartureTime) {
+                                if (a.route.ShortName_Line === b.route.ShortName_Line) {
+                                    if (a.route.ShortName_Line === b.route.ShortName_Line) {
+                                        return ((a.route.ID_Line > b.route.ID_Line) ? 1 : -1);
+                                    }
+                                }
+                                return ((parseInt(a.route.ShortName_Line) > parseInt(b.route.ShortName_Line)) ? 1 : -1);
+                            }
+                            return ((a.service.ExpectedDepartureTime > b.service.ExpectedDepartureTime) ? 1 : -1)
+                        }
+                        return ((a.route.TransportMode < b.route.TransportMode) ? 1 : -1);
+                    });
 
                     stop.stopID = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit[0].MonitoringRef.value;
                     stop.stopInfo = stopInfo;
@@ -217,9 +232,10 @@ Module.register("MMM-IdF-Transport", {
     },
 
     createDataRow: function (routeObj) {
-        if (!routeObj.service.ExpectedDepartureTime)
+        if (isNaN(routeObj.service.ExpectedDepartureTime))
             return null;
-        let etaArray = new Date(routeObj.service.ExpectedDepartureTime);
+        let etaArray = routeObj.service.ExpectedDepartureTime;
+
         const options = {
             hour: "2-digit",
             minute: "2-digit"
@@ -238,9 +254,6 @@ Module.register("MMM-IdF-Transport", {
         } else if (routeObj.service.live_departures_seconds) {
             etaArray = routeObj.service.live_departures_seconds.map(seconds => moment().seconds(seconds).format(this.config.timeFormat));
         }*/
-
-        if (etaArray.length == 0)
-            return null;
 
         let row = document.createElement("tr");
 

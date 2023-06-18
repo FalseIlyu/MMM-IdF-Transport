@@ -1,4 +1,5 @@
 .MMM-IdF-Transport .table {
+	font-family: 'Helvetica', 'Arial', sans-serif;
     border-spacing: 0px 0px;
     border-collapse: separate;
     text-align: left;
@@ -9,14 +10,16 @@
 	}
 
 .MMM-IdF-Transport .destination {
+	font-family: 'Helvetica', 'Arial', sans-serif;
 	font-weight: normal;
 	color: white;
 	}
 	
 .MMM-IdF-Transport .line {
+	font-family: 'Helvetica', 'Arial', sans-serif;
     border-spacing: 10px 0px;
     border-collapse: separate;
-    text-align: left;
+    text-align: center;
 	color:white;
 	font-weight: normal;
 	width: 60px;
@@ -57,8 +60,8 @@
 .container {
 	position: relative;
 	text-align: center;
-	color: white;
-  }
+	color: black;
+}
 
 /* Centered text */
 .centered {
