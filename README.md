@@ -1,3 +1,5 @@
+Don't forget to take a look at [MMM-HK-Transport-ETA Module](https://github.com/winstonma/MMM-HK-Transport-ETA) by [winstonma](https://github.com/winstonma) whose older module makes the foundation for this one. 
+
 Dataset about the line (referentiel-des-lignes-de-transport-en-commun-dile-de-france.csv) from [Île de France Mobilités](https://data.iledefrance-mobilites.fr/explore/dataset/referentiel-des-lignes/)
 # MMM-IdF-Transport
 <B>Station monitor</B> for the <B>Île de France Transport Network</B>.<P>
