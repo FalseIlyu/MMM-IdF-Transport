@@ -97,5 +97,6 @@ Sample configuration entry for your `~/MagicMirror/config/config.js` with option
 | :---: | :---: | --- |
 | ApiKey | None, must be generated on [PRIM](https://prim.iledefrance-mobilites.fr) | The key to access the real time arrival/departure API |
 | stopID | STIF:StopPoint:Q:473921: | <BR>Which stop would you like to have displayed? <BR><EM> Default: STIF:StopPoint:Q:473921:</EM><P> |
+| lineID | n\a | <BR>Filter the stop with the specified line<BR><EM>Possible values: STIF:Line::C01383:</EM><P> |
 | showLabelRow<BR>`optional` | true | <BR> Show or hide column headers<BR> <EM>Possible values: true, false</EM><P> |
 | reloadInterval<BR>`optional`  | 60000 | <BR> How often should the information be updated? (In milliseconds) <BR><EM> Default: Every minute </EM><P> |

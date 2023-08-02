@@ -66,7 +66,12 @@ module.exports = NodeHelper.create({
     getStopInfo: function (stopInfo, config) {
         const baseURL = "https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=";
 
-        const url = baseURL + stopInfo.stopID;
+        url = baseURL + stopInfo.stopID;
+        if (stopInfo.lineID)
+        {
+            url = url + "&LineRef=" + stopInfo.lineID;
+        }
+        Log.log(url)
         // TODO remove debug log
         Log.log("Connecting to : " + url);
         // TODO remove debug log
@@ -99,7 +104,13 @@ module.exports = NodeHelper.create({
      */
     createFetcher: function (stopID, stopInfo, config) {
         Log.log("Create Fetcher")
-        const url = config.primURL + stopID || "";
+        if (stopInfo.lineID)
+        {
+            url = `${config.primURL}${stopID}&LineRef=${stopInfo.lineID}` || "";
+        } else
+        {
+            url = `${config.primURL}${stopID}` || "";
+        }
         const reloadInterval = stopInfo.reloadInterval || config.reloadInterval || 5 * 60 * 1000;
 
         try {

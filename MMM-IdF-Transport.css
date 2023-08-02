@@ -37,6 +37,7 @@
 .MMM-IdF-Transport .noTramRow {
 	font-weight: normal;
 	color: white;
+	font-weight: normal;
 	}
 	
 .MMM-IdF-Transport .bus {
@@ -63,17 +64,3 @@
 	margin: auto;
 	float: left;
 }
-
-/* Container holding the image and the text */
-.container {
-	text-align: center;
-	color: black;
-}
-
-/* Centered text */
-.centered {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(0%, -50%);
-  }
