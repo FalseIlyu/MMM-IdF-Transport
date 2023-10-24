@@ -76,8 +76,10 @@ Sample configuration entry for your `~/MagicMirror/config/config.js` with option
 			config: {
 				apiKey: 'someapikey', // You need to make a key on https://prim.iledefrance-mobilites.fr/fr
 				stops: [
-					{ stopID: 'STIF:StopPoint:Q:473921:' },
-					{ stopID: 'STIF:StopPoint:Q:474017:' }
+					{
+						stopID: 'STIF:StopArea:SP:72203:',
+						lineID: 'STIF:Line::C01383:',
+					},
 				],
 				showLabelRow: true, // Show or hide column headers
 				reloadInterval: 60000 	// How often should the information be updated? (In milliseconds)
