@@ -82,7 +82,9 @@ Sample configuration entry for your `~/MagicMirror/config/config.js` with option
 					},
 				],
 				showLabelRow: true, // Show or hide column headers
-				reloadInterval: 60000 	// How often should the information be updated? (In milliseconds)
+				reloadInterval: 60000, 	// How often should the information be updated? (In milliseconds)
+   	                        nbStopInfo: 3 //Maximum nb of stopInfo to show per stop
+
 			}
     } 						// If this isn't your last module, add a comma after the bracket
     
@@ -102,3 +104,5 @@ Sample configuration entry for your `~/MagicMirror/config/config.js` with option
 | lineID<BR>`optional` | n\a | <BR>Filter the stop with the specified line<BR><EM>Possible values: STIF:Line::C01383:</EM><P> |
 | showLabelRow<BR>`optional` | true | <BR> Show or hide column headers<BR> <EM>Possible values: true, false</EM><P> |
 | reloadInterval<BR>`optional`  | 60000 | <BR> How often should the information be updated? (In milliseconds) <BR><EM> Default: Every minute </EM><P> |
+| nbStopInfo<BR>`optional`  | 2 | <BR> Maximum nb of stopInfo to show per stop? (In milliseconds) <BR><EM> Default: 2 </EM><P> |
+
