@@ -243,21 +243,8 @@ Module.register("MMM-IdF-Transport", {
         const options = {
             hour: "2-digit",
             minute: "2-digit"
-          };
-          const timetable = new Intl.DateTimeFormat("fr", options).format;
-        // etaArray = etaArray.match(/(\d{2}:){2}\d{2}/)[0]
-
-        /*if (routeObj.service.ExpectedDepartureTime) {
-            etaArray = routeObj.service.ExpectedDepartureTime
-                .filter(data => moment.duration(moment(data).diff(moment())).asHours() < 1)
-                .map(etaStr => moment(etaStr).format(this.config.timeFormat));
-        } else if (routeObj.service.headway_seconds_range) {
-            const [rangeBottom, rangeTop] = routeObj.service.headway_seconds_range.map(seconds => Math.floor(seconds / 60));
-            const midStr = (rangeBottom == rangeTop) ? rangeBottom : `${rangeBottom}—${rangeTop}`;
-            etaArray = this.translate("EVERY") + midStr + this.translate("MINUTES");
-        } else if (routeObj.service.live_departures_seconds) {
-            etaArray = routeObj.service.live_departures_seconds.map(seconds => moment().seconds(seconds).format(this.config.timeFormat));
-        }*/
+        };
+        const timetable = new Intl.DateTimeFormat("fr", options).format;
 
         let row = document.createElement("tr");
 
@@ -268,8 +255,6 @@ Module.register("MMM-IdF-Transport", {
         line.innerHTML = routeObj.route.ID_Line
         if (line.innerHTML)
             line.innerHTML = routeObj.route.lineHtml;
-        /*if (routeObj.route.brand === "GMBBus")
-            line.innerHTML += '<sup><i class="fas fa-shuttle-van"></i></sup>';*/
         row.appendChild(line);
 
         let destination = document.createElement("td");
