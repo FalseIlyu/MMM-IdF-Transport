@@ -104,5 +104,5 @@ Sample configuration entry for your `~/MagicMirror/config/config.js` with option
 | lineID<BR>`optional` | n\a | <BR>Filter the stop with the specified line<BR><EM>Possible values: STIF:Line::C01383:</EM><P> |
 | showLabelRow<BR>`optional` | true | <BR> Show or hide column headers<BR> <EM>Possible values: true, false</EM><P> |
 | reloadInterval<BR>`optional`  | 60000 | <BR> How often should the information be updated? (In milliseconds) <BR><EM> Default: Every minute </EM><P> |
-| nbStopInfo<BR>`optional`  | n\a | <BR>  Maximum nb of stopInfo to show per stop <BR><EM> Default: All stopInfo will be show if not set </EM><P> |
+| nbStopInfo<BR>`optional`  | n\a | <BR>  Maximum nb of stopInfo to show per stop <BR><EM> Default: All stopInfo will be shown if not set </EM><P> |
 
