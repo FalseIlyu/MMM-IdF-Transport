@@ -133,7 +133,15 @@ Module.register("MMM-IdF-Transport", {
 
         Object.entries(this.primData).forEach(([stopID, stop]) => {
             const stopConfig = this.config.stops.find(stop => stop.stopID == stopID);
-            wrapper.appendChild(this.createStops(stopConfig, stop));
+            let stopDisplay =  document.createElement("div");
+            if (this.config.header)
+            {
+                let header = document.createElement("header");
+                header.innerHTML = stop.stopInfo[0].service.StopPointName[0].value;
+                stopDisplay.appendChild(header);
+            }
+            stopDisplay.appendChild(this.createStops(stopConfig, stop));
+            wrapper.appendChild(stopDisplay);
         });
 
         return wrapper;
@@ -141,8 +149,6 @@ Module.register("MMM-IdF-Transport", {
 
     // Override getHeader method.
 	getHeader: function () {
-        if (this.config.header)
-            return (Object.keys(this.primData).length === 0) ? this.name : this.getDisplayString(Object.entries(this.primData)[0][1].stopInfo[0].service.StopPointName[0].value);
         return ``;
     },
 
