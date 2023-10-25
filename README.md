@@ -76,8 +76,10 @@ Sample configuration entry for your `~/MagicMirror/config/config.js` with option
 			config: {
 				apiKey: 'someapikey', // You need to make a key on https://prim.iledefrance-mobilites.fr/fr
 				stops: [
-					{ stopID: 'STIF:StopPoint:Q:473921:' },
-					{ stopID: 'STIF:StopPoint:Q:474017:' }
+					{
+						stopID: 'STIF:StopArea:SP:72203:',
+						lineID: 'STIF:Line::C01383:',
+					},
 				],
 				showLabelRow: true, 	// Show or hide column headers
 				reloadInterval: 60000, 	// How often should the information be updated? (In milliseconds)
@@ -99,6 +101,7 @@ Sample configuration entry for your `~/MagicMirror/config/config.js` with option
 | :---: | :---: | --- |
 | ApiKey | None, must be generated on [PRIM](https://prim.iledefrance-mobilites.fr) | The key to access the real time arrival/departure API |
 | stopID | STIF:StopPoint:Q:473921: | <BR>Which stop would you like to have displayed? <BR><EM> Default: STIF:StopPoint:Q:473921:</EM><P> |
+| lineID<BR>`optional` | n\a | <BR>Filter the stop with the specified line<BR><EM>Possible values: STIF:Line::C01383:</EM><P> |
 | showLabelRow<BR>`optional` | true | <BR> Show or hide column headers<BR> <EM>Possible values: true, false</EM><P> |
 | reloadInterval<BR>`optional`  | 60000 | <BR> How often should the information be updated? (In milliseconds) <BR><EM> Default: Every minute </EM><P> |
 | nbStopInfo<BR>`optional`  | 2 | <BR> Maximum nb of stopInfo to show per stop <BR><EM> Default: 2 </EM><P> |
