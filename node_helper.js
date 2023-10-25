@@ -95,8 +95,8 @@ module.exports = NodeHelper.create({
     },
 
     /**
-     * Creates a fetcher for a ETA feed if it doesn't exist yet.
-     * Otherwise it reuses the existing one.
+     * Creates a fetcher for an ETA feed if it doesn't exist yet.
+     * Otherwise, it reuses the existing one.
      *
      * @param {object} stopID The stopID.
      * @param {object} stopInfo The stopInfo.

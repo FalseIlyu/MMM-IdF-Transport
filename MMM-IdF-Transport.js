@@ -8,6 +8,7 @@
 Module.register("MMM-IdF-Transport", {
 
     defaults: {
+        header: true,
         stops: [
             {
                 stopID: 'STIF:StopPoint:Q:473921:'
@@ -16,7 +17,7 @@ Module.register("MMM-IdF-Transport", {
         timeFormat: (config.timeFormat !== 24) ? "h:mm" : "HH:mm",
         showLabelRow: true,
         primURL: 'https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=',
-        reloadInterval: 1 * 60 * 1000       // every minute
+        reloadInterval: 60 * 1000       // every minute
     },
 
     // Define required scripts.
@@ -71,8 +72,7 @@ Module.register("MMM-IdF-Transport", {
                     const stop = v;
                     // Merge sevices and routes into one
                     const stopInfo = stop.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(service => {
-                        let DepartureTime = new Date(service.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime)
-                        service.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime = DepartureTime
+                        service.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime = new Date(service.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime)
                         return {
                             route: service.MonitoredVehicleJourney.LineRef,
                             service: service.MonitoredVehicleJourney.MonitoredCall
@@ -141,8 +141,10 @@ Module.register("MMM-IdF-Transport", {
 
     // Override getHeader method.
 	getHeader: function () {
-        return (Object.keys(this.primData).length === 0) ? this.name : this.getDisplayString(Object.entries(this.primData)[0][1].stopInfo[0].service.StopPointName[0].value);
-	},
+        if (this.config.header)
+            return (Object.keys(this.primData).length === 0) ? this.name : this.getDisplayString(Object.entries(this.primData)[0][1].stopInfo[0].service.StopPointName[0].value);
+        return ``;
+    },
 
     getDisplayString: function (input) {
         const langTable = {
