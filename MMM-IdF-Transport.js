@@ -16,9 +16,7 @@ Module.register("MMM-IdF-Transport", {
         timeFormat: (config.timeFormat !== 24) ? "h:mm" : "HH:mm",
         showLabelRow: true,
         primURL: 'https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=',
-        reloadInterval: 1 * 60 * 1000,       // every minute
-	nbStopInfo: 2 //Maximum nb of StopInfo to show
-
+        reloadInterval: 1 * 60 * 1000       // every minute
     },
 
     // Define required scripts.
@@ -178,7 +176,8 @@ Module.register("MMM-IdF-Transport", {
         table.appendChild(this.createSpacerRow());
 
 	//Reduce nb of stopInfo to show if needed
-	stop.stopInfo = stop.stopInfo.splice(0,this.config.nbStopInfo);
+       if (typeof this.config.nbStopInfo !== 'undefined')
+            stop.stopInfo = stop.stopInfo.splice(0,this.config.nbStopInfo);
 
         // This loop create the table that display the content
         stop.stopInfo.forEach(element => {
